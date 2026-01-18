@@ -1,13 +1,11 @@
 {
-  "device": "ESP32-C3",
-  "latest_version": "1.0.4",
-  "force": true,
+  "latest_version": "1.0.5",
   "min_version": "1.0.2",
-  "max_version": null,
-  "baseline_ts": "2026-01-18T10:00:00Z",
+  "max_version": "1.0.5",
+  "force_update": false,
   "firmware": {
-    "url": "https://github.com/Thanormsin/SmartFarmOTA/releases/download/1.0.4/ESP32-C3_v1.0.4-GOLDEN.bin",
-    "size": 812736
+  "version": "1.0.5",
+  "url": "https://github.com/Thanormsin/SmartFarmOTA/releases/download/1.0.5/ESP32-C3_v1.0.5-GOLDEN.bin"
   },
-  "note": "Force OTA test + reboot-safe"
+  "note": "Bugfix: WiFi reconnect + LED sync blink"
 }

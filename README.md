@@ -1,7 +1,9 @@
 # WolffiaSmartFarm
 ESP32-C3 Super Mini
   install 
-  - Arduino_json Library
   - PubSubClient
   - ArduinoJson
   - Preferences
+
+  - Board Manager
+    - EESP32  --> V 3.3.3

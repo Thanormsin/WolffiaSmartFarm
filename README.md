@@ -11,3 +11,72 @@
 OTA
   - Normal = Current <> New && New(ETag)
   - Force  = Force = True && New(ETag)
+
+┌────────────┐
+│ BOOT       │
+└─────┬──────┘
+│
+v
+┌──────────────┐
+│ MCU_GUARD    │
+│ (ESP Check)  │
+└─────┬────────┘
+│ ESP8266
+├──────────────► [BLINK BUILTIN LED FOREVER]
+│
+v
+┌──────────────────┐
+│ INIT SYSTEM      │
+└─────┬────────────┘
+      │
+      v
+┌──────────────────┐
+│ CONNECT WIFI     │
+│ + READ RSSI      │
+└─────┬────────────┘
+      │ Fail
+      ├──────────────► [RUN NORMAL APP]
+      │
+      v
+┌────────────────────────────┐
+│ SHOW VERSION / ETAG LOG    │
+│ Current vs New             │
+└─────┬──────────────────────┘
+      │
+      v
+┌────────────────────────────┐
+│ IDLE / SLEEP               │◄──────────────┐
+│ (Waiting for Intent)       │               │
+└─────┬───────────────┬──────┘               │
+      │               │                      │
+      │               │                      │
+      v               v                      │
+┌──────────────┐ ┌─────────────────┐         │
+│ BTN LONG     │ │ FORCE OTA       │         │
+│ PRESS 3s     │ │ TRIGGER         │         │
+└─────┬────────┘ │ (JSON / Web)    │         │
+      │          └─────┬───────────┘         │
+      │                │                     │
+      v                v                     │
+┌──────────────────┐ ┌──────────────────┐    │
+│ NORMAL OTA CHECK │ │ FORCE OTA CHECK  │    │
+│                  │ │                  │    │
+│ - WiFi           │ │ - WiFi           │    │
+│ - RSSI           │ │ - RSSI           │    │
+│ - Version        │ │ (Ignore Version) │    │
+│ - ETag           │ │ (Ignore ETag)    │    │
+│ - force=false    │ └─────┬────────────┘    │
+└─────┬────────────┘       │                 │
+      │ Fail               │                 │
+      ├──────────────► [EXIT OTA] ───────────┘
+      │
+      v
+┌──────────────────┐
+│ START OTA        │
+│ UPDATE           │
+└─────┬────────────┘
+      │
+      v
+┌──────────────────┐
+│ REBOOT           │
+└──────────────────┘

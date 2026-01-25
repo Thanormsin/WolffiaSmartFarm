@@ -11,6 +11,9 @@
 OTA
   - Normal = Current <> New && New(ETag)
   - Force  = Force = True && New(ETag)
+Build format : YYYYMMDDHHMM  //2026011207 2026 Jan 12:07
+
+Test Mode : ดูรูปประกอบ
 
 ┌────────────┐
 │ BOOT       │
